@@ -18,7 +18,7 @@ function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/platform.png');
     game.load.image('star', 'assets/star.png');
-    game.load.spritesheet('dude', 'assets/dude.png', 100, 100);
+    game.load.spritesheet('dude', 'assets/dude.png', 30, 55);
 }
 var player;
 var platforms;
@@ -100,6 +100,7 @@ function update() {
     else
     {
         //  Stand still
+	    
         player.animations.stop();
         player.frame = 4;
     }
