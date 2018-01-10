@@ -51,7 +51,7 @@ function create() {
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
     //  Player physics properties. Give the little guy a slight bounce.
-    player.body.bounce.y = 0.2;
+    player.body.bounce.y = 5.2;
     player.body.gravity.y = 300;
     player.body.collideWorldBounds = true;
     //  Our two animations, walking left and right.
@@ -115,7 +115,7 @@ function collectStar (player, star) {
     // Removes the star from the screen
     star.kill();
     //  Add and update the score
-    score += 10;
+    score += 10000;
     scoreText.text = 'Score: ' + score;
 }
 </script>
