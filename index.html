@@ -17,13 +17,13 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/platform.png');
-    game.load.image('dragonball', 'assets/dragonball.png');
+    game.load.image('star', 'assets/star.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 }
 var player;
 var platforms;
 var cursors;
-var dragonball;
+var stars;
 var score = 0;
 var scoreText;
 function create() {
@@ -58,18 +58,18 @@ function create() {
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     //  Finally some stars to collect
-    dragonball = game.add.group();
+    stars = game.add.group();
     //  We will enable physics for any star that is created in this group
-   dragonball.enableBody = true;
+    stars.enableBody = true;
     //  Here we'll create 12 of them evenly spaced apart
     for (var i = 0; i < 12; i++)
     {
         //  Create a star inside of the 'stars' group
-        var dragonball = dragonball.create(i * 70, 0, 'star');
+        var star = stars.create(i * 70, 0, 'star');
         //  Let gravity do its thing
-        dragonball.body.gravity.y = 300;
+        star.body.gravity.y = 300;
         //  This just gives each star a slightly random bounce value
-        dragonball.body.bounce.y = 0.7 + Math.random() * 0.2;
+        star.body.bounce.y = 0.7 + Math.random() * 0.2;
     }
     //  The score
     scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
@@ -80,9 +80,9 @@ function create() {
 function update() {
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
-    game.physics.arcade.collide(dragonball, platforms);
+    game.physics.arcade.collide(stars, platforms);
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    game.physics.arcade.overlap(player, dragonball, collectDragonball, null, this);
+    game.physics.arcade.overlap(player, stars, collectStar, null, this);
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
     if (cursors.left.isDown)
@@ -110,10 +110,10 @@ function update() {
         player.body.velocity.y = -350;
     }
 }
-function collectDragonball (player, dragonball) {
+function collectStar (player, star) {
     
     // Removes the star from the screen
- 	dragonball.kill();
+    star.kill();
     //  Add and update the score
     score += 10;
     scoreText.text = 'Score: ' + score;
