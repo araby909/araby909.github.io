@@ -32,7 +32,7 @@ function create() {
     //  A simple background for our game
     game.add.sprite(0, 0, 'sky');
     //  The platforms group contains the ground and the 2 ledges we can jump on
-	movingplatform.body.velocity.setTo(200,200);
+	platforms.body.velocity.setTo(200,200);
 	platforms = game.add.group();
 	platforms.enableBody = true;
 	platforms.physicsBodyType = Phaser.Physics.ARCADE;
