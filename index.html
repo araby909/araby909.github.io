@@ -37,7 +37,8 @@ function create() {
 	platforms.enableBody = true;
 	platforms.physicsBodyType = Phaser.Physics.ARCADE;
 	var platform = game.add.sprite(x, y, 'platform');
-	game.physics.enable(platform, Phaser.Physics.ARCADE);platform.body.immovable = true;
+	game.physics.enable(platform, Phaser.Physics.ARCADE);
+	platform.body.immovable = true;
 	platform.body.allowGravity = false;
 	platform.body.collideWorldBounds = true;
 	platforms.add(platform);
