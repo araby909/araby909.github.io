@@ -48,7 +48,19 @@ function create() {
 	game.add.sprite(0, 0, 'sky');
     var ledge = platforms.create(400, 400, 'ground');
     ledge.body.immovable = false;
+	platforms.getAt(1).body.velocity.x = -100;platforms.getAt(1).body.bounce.set(1);
+	if ( platforms.getAt(1).x <= 0 ){     
+		platforms.getAt(1).x += 0.1}
+	else if ( platforms.getAt(1).x >= game.width ){     
+		platforms.getAt(1).x -= 0.1}
+	else{     platforms.getAt(1).x += 0.1}
     ledge = platforms.create(-150, 250, 'ground');
+	platforms.getAt(2).body.velocity.x = -100;platforms.getAt(2).body.bounce.set(2);
+	if ( platforms.getAt(2).x <= 0 ){     
+		platforms.getAt(2).x += 0.1}
+	else if ( platforms.getAt(2).x >= game.width ){     
+		platforms.getAt(2).x -= 0.1}
+	else{     platforms.getAt(2).x += 0.1}
     ledge.body.immovable = false;
 		platforms.add(platform);
 	    game.add.sprite(0, 0, 'sky');
