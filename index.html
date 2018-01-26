@@ -26,22 +26,18 @@ var cursors;
 var stars;
 var score = 0;
 var scoreText;
+	function gofull() {
+	if (game.scale.isFullScreen) {
+		game.scale.stopFullScreen
+	} else { game.scale.startFullScreen(false);
+	}
+	}
 function create() {
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our game
     game.add.sprite(0, 0, 'sky');
     //  The platforms group contains the ground and the 2 ledges we can jump on
-	platforms.body.velocity.setTo(200,200);
-	platforms = game.add.group();
-	platforms.enableBody = true;
-	platforms.physicsBodyType = Phaser.Physics.ARCADE;
-	var platform = game.add.sprite(x, y, 'platform');
-	game.physics.enable(platform, Phaser.Physics.ARCADE);
-	platform.body.immovable = true;
-	platform.body.allowGravity = false;
-	platform.body.collideWorldBounds = true;
-	platforms.add(platform);
     // Here we create the ground.
     var ground = platforms.create(0, game.world.height - 64, 'ground');
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
@@ -50,9 +46,21 @@ function create() {
     ground.body.immovable = true;
     //  Now let's create two ledges
     var ledge = platforms.create(400, 400, 'ground');
-    ledge.body.immovable = true;
+    ledge.body.immovable = false;
     ledge = platforms.create(-150, 250, 'ground');
-    ledge.body.immovable = true;
+    ledge.body.immovable = false;
+	    game.add.sprite(0, 0, 'sky');
+    //  The platforms group contains the ground and the 2 ledges we can jump on
+	platforms.body.velocity.setTo(32,32);
+	platforms = game.add.group();
+	platforms.enableBody = true;
+	platforms.physicsBodyType = Phaser.Physics.ARCADE;
+	var platform = game.add.sprite(x, y, 'platform');
+	game.physics.enable(platform, Phaser.Physics.ARCADE);
+	platform.body.immovable = false;
+	platform.body.allowGravity = false;
+	platform.body.collideWorldBounds = true;
+	platforms.add(platform);
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
     //  We need to enable physics on the player
