@@ -45,10 +45,12 @@ function create() {
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
     //  Now let's create two ledges
+	game.add.sprite(0, 0, 'sky');
     var ledge = platforms.create(400, 400, 'ground');
     ledge.body.immovable = false;
     ledge = platforms.create(-150, 250, 'ground');
     ledge.body.immovable = false;
+		platforms.add(platform);
 	    game.add.sprite(0, 0, 'sky');
     //  The platforms group contains the ground and the 2 ledges we can jump on
 	platforms.body.velocity.setTo(32,32);
@@ -60,7 +62,7 @@ function create() {
 	platform.body.immovable = false;
 	platform.body.allowGravity = false;
 	platform.body.collideWorldBounds = true;
-	platforms.add(platform);
+	bounce-ableplatform.body.collideWorldBounds = true;
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
     //  We need to enable physics on the player
