@@ -57,8 +57,6 @@ function create() {
 	else{     platforms.getAt(2).x += 0.1}
     ledge.body.immovable = false;
 		platforms.add(platform);
-	    game.add.sprite(0, 0, 'sky');
-    //  The platforms group contains the ground and the 2 ledges we can jump on
 	platforms.body.velocity.setTo(32,32);
 	platforms = game.add.group();
 	platforms.enableBody = true;
