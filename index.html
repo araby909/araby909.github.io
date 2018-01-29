@@ -26,12 +26,6 @@ var cursors;
 var stars;
 var score = 0;
 var scoreText;
-	function gofull() {
-	if (game.scale.isFullScreen) {
-		game.scale.stopFullScreen
-	} else { game.scale.startFullScreen(false);
-	}
-	}
 function create() {
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
