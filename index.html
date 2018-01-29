@@ -63,12 +63,12 @@ function create() {
 	ground.enableBody = true;
 	ground.physicsBodyType = Phaser.Physics.ARCADE;
 	var platforms = game.add.sprite(x, y, 'platforms');
-	game.physics.enable(platform, Phaser.Physics.ARCADE);
+	game.physics.enable(platforms, Phaser.Physics.ARCADE);
 	platforms.body.immovable = false;
 	platforms.body.allowGravity = false;
 	platforms.body.collideWorldBounds = true;
-	bounce-ableplatform.body.collideWorldBounds = true;
-	returnplatform.body.bounce.set(1);
+	bounce-ablePlatforms.body.collideWorldBounds = true;
+	returnPlatforms.body.bounce.set(1);
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
     //  We need to enable physics on the player
